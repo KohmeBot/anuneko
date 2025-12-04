@@ -11,11 +11,11 @@ import (
 )
 
 func (p *PluginAnuneko) SetOnAt(engine plugin.Engine) {
-	engine.OnMessage(p.env.Groups().Rule()).SetBlock(true).Handle(func(ctx *zero.Ctx) {
+	engine.OnMessage(p.env.Groups().Rule(), func(ctx *zero.Ctx) bool {
 		// 只处理at消息
-		if !ctx.Event.IsToMe {
-			return
-		}
+		return ctx.Event.IsToMe
+	}).SetBlock(true).Handle(func(ctx *zero.Ctx) {
+
 		uid := ctx.Event.UserID
 
 		var err error

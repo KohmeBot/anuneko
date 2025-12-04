@@ -26,9 +26,9 @@ func (p *PluginAnuneko) OnInit(engine plugin.Engine, env plugin.Env) error {
 
 	p.client = NewClient(p.conf.Token, p.conf.Cookie, p.conf.DeviceId)
 
-	p.SetOnAt(engine)
 	p.SetOnCreateSession(engine)
 	p.SetOnSwitchModel(engine)
+	p.SetOnAt(engine)
 
 	return nil
 }
@@ -54,5 +54,5 @@ func (p *PluginAnuneko) Name() string {
 }
 
 func (p *PluginAnuneko) Version() string {
-	return "v0.0.1"
+	return "v0.0.2"
 }
