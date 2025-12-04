@@ -210,8 +210,9 @@ func (c *AnuNekoClient) StreamReply(sessionID, text string) (string, error) {
 		if cList, ok := j["c"].([]any); ok {
 			for _, item := range cList {
 				mObj, _ := item.(map[string]any)
-				idx := int(mObj["c"].(float64))
-				if idx == 0 { // 选第一个
+				idx, _ := mObj["c"].(float64)
+
+				if int(idx) == 0 { // 选第一个
 					if v, ok := mObj["v"].(string); ok {
 						result.WriteString(v)
 					}
