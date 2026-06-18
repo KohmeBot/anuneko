@@ -17,6 +17,10 @@ func NewPlugin() plugin.Plugin {
 	return new(PluginAnuneko)
 }
 
+func (p *PluginAnuneko) ConfigModel() any {
+	return new(Config)
+}
+
 func (p *PluginAnuneko) OnInit(engine plugin.Engine, env plugin.Env) error {
 	p.env = env
 
@@ -54,5 +58,5 @@ func (p *PluginAnuneko) Name() string {
 }
 
 func (p *PluginAnuneko) Version() string {
-	return "v0.0.3"
+	return "v0.0.4"
 }
